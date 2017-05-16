@@ -16,35 +16,55 @@ enum CalculationType {
 
 let kmToMilesConstant: Double = 0.621371
 
-let baseColor: UIColor = UIColor(white: 0.5, alpha: 0.1)
+let containerColor: UIColor = UIColor(white: 0.98, alpha: 1)
+let backgroundColor: UIColor = UIColor(white: 0.9, alpha: 1)
 
 class RunningPaceController: UIViewController {
     
     var textFieldBeingEdited: UITextField?
     let userDefaults = UDWrapper()
     
+    let timeHeader: HeaderView = {
+        let header = HeaderView()
+        header.headerName.text = "Time"
+        header.backgroundColor = .white
+        return header
+    }()
+    
     lazy var timeContainer: TimeView = {
         let container = TimeView()
         container.racePaceController = self
-        container.backgroundColor = baseColor
-        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = containerColor
         return container
         
+    }()
+    
+    let distanceHeader: HeaderView = {
+        let header = HeaderView()
+        header.headerName.text = "Distance"
+        header.backgroundColor = .white
+        return header
     }()
     
     lazy var distanceContainer: DistanceView = {
         let container = DistanceView()
         container.racePaceController = self
-        container.backgroundColor = baseColor
-        container.translatesAutoresizingMaskIntoConstraints = false
+        container.userDefaults = self.userDefaults
+        container.backgroundColor = containerColor
         return container
+    }()
+    
+    let paceHeader: HeaderView = {
+        let header = HeaderView()
+        header.headerName.text = "Pace"
+        header.backgroundColor = .white
+        return header
     }()
     
     lazy var paceContainer: PaceView = {
         let container = PaceView()
         container.racePaceController = self
-        container.backgroundColor = baseColor
-        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = containerColor
         return container
     }()
     
@@ -64,32 +84,37 @@ class RunningPaceController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Running Pace Calculator"
-        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "cog").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showOptions))
+        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "cog"), style: .plain, target: self, action: #selector(showOptions))
         navigationItem.setRightBarButton(button, animated: true)
+        
+        // get rid of black bar underneath navbar
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = UIColor(red: 234/255, green: 0, blue: 0, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        navigationController!.navigationBar.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.white]
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
         gestureRecognizer.cancelsTouchesInView = false
         self.view.addGestureRecognizer(gestureRecognizer)
         
+        view.addSubview(timeHeader)
+        timeHeader.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
+        
         view.addSubview(timeContainer)
-        timeContainer.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
-        timeContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        timeContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        timeContainer.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        timeContainer.anchor(top: timeHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        
+        view.addSubview(distanceHeader)
+        distanceHeader.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
         
         view.addSubview(distanceContainer)
-        distanceContainer.topAnchor.constraint(equalTo: timeContainer.bottomAnchor).isActive = true
-        distanceContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        distanceContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        distanceContainer.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        distanceContainer.anchor(top: distanceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        
+        view.addSubview(paceHeader)
+        paceHeader.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
         
         view.addSubview(paceContainer)
-        paceContainer.topAnchor.constraint(equalTo: distanceContainer.bottomAnchor).isActive = true
-        paceContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        paceContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        paceContainer.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        
+        paceContainer.anchor(top: paceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
         
         view.addSubview(upperSeparator)
         upperSeparator.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
@@ -97,10 +122,10 @@ class RunningPaceController: UIViewController {
         view.addSubview(lowerSeparator)
         lowerSeparator.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
         
-        view.backgroundColor = .white
+        view.backgroundColor = backgroundColor
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         let unit = userDefaults.getDistanceUnits()
         
@@ -142,15 +167,11 @@ class RunningPaceController: UIViewController {
         
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.timeContainer.backgroundColor = baseColor
-            self.distanceContainer.backgroundColor = baseColor
-            self.paceContainer.backgroundColor = baseColor
+            self.timeContainer.backgroundColor = containerColor
+            self.distanceContainer.backgroundColor = containerColor
+            self.paceContainer.backgroundColor = containerColor
             
         }, completion: nil)
-        
-        timeContainer.backgroundColor = baseColor
-        distanceContainer.backgroundColor = baseColor
-        paceContainer.backgroundColor = baseColor
     }
     
     func calculate(type: CalculationType) {

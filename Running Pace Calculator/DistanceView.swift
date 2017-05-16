@@ -16,6 +16,7 @@ struct Event {
 class DistanceView: UIView {
     
     var racePaceController: RunningPaceController?
+    var userDefaults:UDWrapper?
     
     var events:[Event] = [Event(name: "5K", distance: 5.000),Event(name: "10K", distance: 10.000),Event(name: "Half-Marathon", distance: 21.098),Event(name: "Marathon", distance: 42.196)]
     
@@ -33,7 +34,7 @@ class DistanceView: UIView {
     
     let title: UILabel = {
         let label = UILabel()
-        label.text = "Distance"
+        label.text = ""
         return label
     }()
     
@@ -92,8 +93,6 @@ class DistanceView: UIView {
         
         toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
-        //        toolBar.isTranslucent = true
-        //        toolBar.tintColor = UIColor(red: 54/255, green: 96/255, blue: 254/255, alpha: 1)
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(donePressed))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
@@ -178,8 +177,18 @@ extension DistanceView: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        let selected = events[row].distance
+        var selected = events[row].distance
         distanceField.text = "\(selected)"
+        
+        let unitSelected = userDefaults?.getDistanceUnits()
+        
+        if unitSelected == .miles {
+            selected = selected * kmToMilesConstant
+            let rounded = Double(round(1000 * selected)/1000)
+            distanceField.text = "\(rounded)"
+        }
+        
+        
     }
 }
 

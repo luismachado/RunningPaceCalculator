@@ -17,7 +17,7 @@ class OptionsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Options 123"
+        navigationItem.title = "Options"
         tableView.register(OptionsCell.self, forCellReuseIdentifier: cellId)
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))

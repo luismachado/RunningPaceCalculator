@@ -14,7 +14,7 @@ class PaceView: UIView {
     
     let title: UILabel = {
         let label = UILabel()
-        label.text = "Pace"
+        label.text = ""
         return label
     }()
     

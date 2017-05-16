@@ -14,7 +14,7 @@ class TimeView: UIView {
     
     let title: UILabel = {
         let label = UILabel()
-        label.text = "Time"
+        label.text = ""
         return label
     }()
     
