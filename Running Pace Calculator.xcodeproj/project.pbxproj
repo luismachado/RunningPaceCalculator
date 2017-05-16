@@ -11,6 +11,13 @@
 		8095822E1ECB329400084B13 /* RunningPaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095822D1ECB329400084B13 /* RunningPaceController.swift */; };
 		809582331ECB329400084B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809582321ECB329400084B13 /* Assets.xcassets */; };
 		809582361ECB329400084B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 809582341ECB329400084B13 /* LaunchScreen.storyboard */; };
+		8095823E1ECB33BA00084B13 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095823D1ECB33B900084B13 /* Extensions.swift */; };
+		809582401ECB33D000084B13 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095823F1ECB33D000084B13 /* AlertHelper.swift */; };
+		809582421ECB33EE00084B13 /* UDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809582411ECB33EE00084B13 /* UDWrapper.swift */; };
+		809582441ECB340400084B13 /* OptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809582431ECB340400084B13 /* OptionsController.swift */; };
+		809582471ECB342600084B13 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809582461ECB342600084B13 /* TimeView.swift */; };
+		809582491ECB343E00084B13 /* DistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809582481ECB343E00084B13 /* DistanceView.swift */; };
+		8095824B1ECB344E00084B13 /* PaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095824A1ECB344E00084B13 /* PaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +27,13 @@
 		809582321ECB329400084B13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		809582351ECB329400084B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		809582371ECB329400084B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8095823D1ECB33B900084B13 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8095823F1ECB33D000084B13 /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		809582411ECB33EE00084B13 /* UDWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDWrapper.swift; sourceTree = "<group>"; };
+		809582431ECB340400084B13 /* OptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsController.swift; sourceTree = "<group>"; };
+		809582461ECB342600084B13 /* TimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		809582481ECB343E00084B13 /* DistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceView.swift; sourceTree = "<group>"; };
+		8095824A1ECB344E00084B13 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +66,36 @@
 		8095822A1ECB329400084B13 /* Running Pace Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				8095822B1ECB329400084B13 /* AppDelegate.swift */,
+				8095824C1ECB347100084B13 /* Helpers */,
+				809582451ECB341700084B13 /* Views */,
 				8095822D1ECB329400084B13 /* RunningPaceController.swift */,
-				809582321ECB329400084B13 /* Assets.xcassets */,
-				809582341ECB329400084B13 /* LaunchScreen.storyboard */,
-				809582371ECB329400084B13 /* Info.plist */,
+				809582431ECB340400084B13 /* OptionsController.swift */,
 			);
 			path = "Running Pace Calculator";
+			sourceTree = "<group>";
+		};
+		809582451ECB341700084B13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				809582461ECB342600084B13 /* TimeView.swift */,
+				809582481ECB343E00084B13 /* DistanceView.swift */,
+				8095824A1ECB344E00084B13 /* PaceView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8095824C1ECB347100084B13 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8095822B1ECB329400084B13 /* AppDelegate.swift */,
+				809582341ECB329400084B13 /* LaunchScreen.storyboard */,
+				809582371ECB329400084B13 /* Info.plist */,
+				8095823D1ECB33B900084B13 /* Extensions.swift */,
+				8095823F1ECB33D000084B13 /* AlertHelper.swift */,
+				809582411ECB33EE00084B13 /* UDWrapper.swift */,
+				809582321ECB329400084B13 /* Assets.xcassets */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,8 +170,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809582401ECB33D000084B13 /* AlertHelper.swift in Sources */,
+				809582471ECB342600084B13 /* TimeView.swift in Sources */,
 				8095822E1ECB329400084B13 /* RunningPaceController.swift in Sources */,
+				809582491ECB343E00084B13 /* DistanceView.swift in Sources */,
+				809582421ECB33EE00084B13 /* UDWrapper.swift in Sources */,
+				8095823E1ECB33BA00084B13 /* Extensions.swift in Sources */,
+				809582441ECB340400084B13 /* OptionsController.swift in Sources */,
 				8095822C1ECB329400084B13 /* AppDelegate.swift in Sources */,
+				8095824B1ECB344E00084B13 /* PaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
