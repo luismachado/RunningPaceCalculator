@@ -144,6 +144,21 @@ class DistanceView: UIView, MissingFieldsProtocol {
     func donePressed() {
         if hiddenDistance.isFirstResponder {
             hiddenDistance.resignFirstResponder()
+            let selectedRow = eventsPickerView.selectedRow(inComponent: 1)
+            setSelectedDistance(selectedRowPicker: selectedRow)
+        }
+    }
+    
+    func setSelectedDistance(selectedRowPicker: Int) {
+        var selected = events[selectedRowPicker].distance
+        distanceField.text = "\(selected)"
+        
+        let unitSelected = userDefaults?.getDistanceUnits()
+        
+        if unitSelected == .miles {
+            selected = selected * kmToMilesConstant
+            let rounded = Double(round(1000 * selected)/1000)
+            distanceField.text = "\(rounded)"
         }
     }
     
@@ -196,19 +211,10 @@ extension DistanceView: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        var selected = events[row].distance
-        distanceField.text = "\(selected)"
-        
-        let unitSelected = userDefaults?.getDistanceUnits()
-        
-        if unitSelected == .miles {
-            selected = selected * kmToMilesConstant
-            let rounded = Double(round(1000 * selected)/1000)
-            distanceField.text = "\(rounded)"
-        }
-        
-        
+        setSelectedDistance(selectedRowPicker: row)
     }
+    
+    
 }
 
 extension DistanceView: UITextFieldDelegate {

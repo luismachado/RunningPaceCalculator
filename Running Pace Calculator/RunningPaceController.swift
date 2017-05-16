@@ -24,6 +24,12 @@ class RunningPaceController: UIViewController {
     var textFieldBeingEdited: UITextField?
     let userDefaults = UDWrapper()
     
+    let bannerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .yellow
+        return view
+    }()
+    
     let timeHeader: HeaderView = {
         let header = HeaderView()
         header.headerName.text = "Time"
@@ -92,6 +98,14 @@ class RunningPaceController: UIViewController {
         return separator
     }()
     
+    let logoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "run")
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -144,6 +158,12 @@ class RunningPaceController: UIViewController {
         
         view.addSubview(bottomSeparator)
         bottomSeparator.anchor(top: paceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        
+        view.addSubview(bannerView)
+        bannerView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        
+        view.addSubview(logoImage)
+        logoImage.anchor(top: bottomSeparator.bottomAnchor, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
         
         view.backgroundColor = backgroundColor
     }

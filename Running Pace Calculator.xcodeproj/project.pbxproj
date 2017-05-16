@@ -74,7 +74,6 @@
 				809582451ECB341700084B13 /* Views */,
 				8095822D1ECB329400084B13 /* RunningPaceController.swift */,
 				809582431ECB340400084B13 /* OptionsController.swift */,
-				8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */,
 			);
 			path = "Running Pace Calculator";
 			sourceTree = "<group>";
@@ -93,6 +92,7 @@
 		8095824C1ECB347100084B13 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */,
 				8095822B1ECB329400084B13 /* AppDelegate.swift */,
 				809582341ECB329400084B13 /* LaunchScreen.storyboard */,
 				809582371ECB329400084B13 /* Info.plist */,
@@ -342,6 +342,7 @@
 				8095823C1ECB329400084B13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
