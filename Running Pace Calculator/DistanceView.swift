@@ -13,7 +13,7 @@ struct Event {
     var distance: Double
 }
 
-class DistanceView: UIView {
+class DistanceView: UIView, MissingFieldsProtocol {
     
     var racePaceController: RunningPaceController?
     var userDefaults:UDWrapper?
@@ -30,12 +30,6 @@ class DistanceView: UIView {
         let tf = UITextField()
         tf.isHidden = true
         return tf
-    }()
-    
-    let title: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        return label
     }()
     
     let orLabel: UILabel = {
@@ -68,6 +62,17 @@ class DistanceView: UIView {
         tf.font = UIFont.systemFont(ofSize: 16)
         return tf
     }()
+    
+    lazy var resetButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "erase"), for: .normal)
+        button.addTarget(self, action: #selector(resetFields), for: .touchUpInside)
+        return button
+    }()
+    
+    func resetFields() {
+        distanceField.text = ""
+    }
     
     lazy var calculateButton: UIButton = {
         let button = UIButton(type: .system)
@@ -103,23 +108,37 @@ class DistanceView: UIView {
         hiddenDistance.inputAccessoryView = toolBar
         addSubview(hiddenDistance)
         
-        addSubview(title)
-        title.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 4, paddingBottom: 0, paddingRight: 4, width: 0, height: 20)
-        
         addSubview(orLabel)
-        orLabel.anchor(top: title.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        orLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         orLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(eventButton)
-        eventButton.anchor(top: title.bottomAnchor, left: orLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 30)
+        eventButton.anchor(top: topAnchor, left: orLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 30)
         
         addSubview(distanceField)
-        distanceField.anchor(top: title.bottomAnchor, left: nil, bottom: nil, right: orLabel.leftAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 70, height: 30)
+        distanceField.anchor(top: topAnchor, left: nil, bottom: nil, right: orLabel.leftAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 70, height: 30)
         
         addSubview(calculateButton)
         calculateButton.anchor(top: orLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 30)
         calculateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
+        addSubview(resetButton)
+        resetButton.anchor(top: nil, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 16, width: 30, height: 30)
+        resetButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        
+    }
+    
+    func highlightMissing() {
+        distanceField.layer.cornerRadius = 5.0;
+        distanceField.layer.borderColor = UIColor.red.cgColor
+        distanceField.backgroundColor = UIColor(red: 255/255, green: 0, blue: 0, alpha: 0.1)
+        distanceField.layer.borderWidth = 1.0;
+    }
+    
+    func clearMissing() {
+        distanceField.layer.borderColor = UIColor.clear.cgColor
+        distanceField.backgroundColor = .white
     }
     
     func donePressed() {

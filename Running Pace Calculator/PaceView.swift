@@ -8,15 +8,9 @@
 
 import UIKit
 
-class PaceView: UIView {
+class PaceView: UIView, MissingFieldsProtocol {
     
     var racePaceController: RunningPaceController?
-    
-    let title: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        return label
-    }()
     
     let minutesField: UITextField = {
         let tf = UITextField()
@@ -37,6 +31,18 @@ class PaceView: UIView {
         tf.font = UIFont.systemFont(ofSize: 16)
         return tf
     }()
+    
+    lazy var resetButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "erase"), for: .normal)
+        button.addTarget(self, action: #selector(resetFields), for: .touchUpInside)
+        return button
+    }()
+    
+    func resetFields() {
+        minutesField.text = ""
+        secondsField.text = ""
+    }
     
     let label: UILabel = {
         let label = UILabel()
@@ -64,9 +70,6 @@ class PaceView: UIView {
     
     fileprivate func setup() {
         
-        addSubview(title)
-        title.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 4, paddingBottom: 0, paddingRight: 4, width: 0, height: 20)
-        
         minutesField.delegate = self
         secondsField.delegate = self
         
@@ -75,13 +78,38 @@ class PaceView: UIView {
         stackView.distribution = .equalSpacing
         
         addSubview(stackView)
-        stackView.anchor(top: title.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 150, height: 30)
+        stackView.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 150, height: 30)
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(calculateButton)
         calculateButton.anchor(top: stackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 30)
         calculateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        addSubview(resetButton)
+        resetButton.anchor(top: nil, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 16, width: 30, height: 30)
+        resetButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
+    
+    func highlightMissing() {
+        
+        minutesField.layer.cornerRadius = 5.0;
+        minutesField.layer.borderColor = UIColor.red.cgColor
+        minutesField.backgroundColor = UIColor(red: 255/255, green: 0, blue: 0, alpha: 0.1)
+        minutesField.layer.borderWidth = 1.0;
+        
+        secondsField.layer.cornerRadius = 5.0;
+        secondsField.layer.borderColor = UIColor.red.cgColor
+        secondsField.backgroundColor = UIColor(red: 255/255, green: 0, blue: 0, alpha: 0.1)
+        secondsField.layer.borderWidth = 1.0;
+    }
+    
+    func clearMissing() {
+        minutesField.layer.borderColor = UIColor.clear.cgColor
+        secondsField.layer.borderColor = UIColor.clear.cgColor
+        minutesField.backgroundColor = .white
+        secondsField.backgroundColor = .white
+    }
+
     
     func setTime(minutes: String, seconds: String) {
         
@@ -96,11 +124,8 @@ class PaceView: UIView {
 }
 
 extension PaceView: UITextFieldDelegate {
-    
-    
-    // TEXT FIELD HIDE KEYBOARD
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide the keyboard.
         textField.resignFirstResponder()
         return true
     }

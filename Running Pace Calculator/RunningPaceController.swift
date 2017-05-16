@@ -68,6 +68,12 @@ class RunningPaceController: UIViewController {
         return container
     }()
     
+    let topSeparator: UIView = {
+        let separator = UIView()
+        separator.backgroundColor = .black
+        return separator
+    }()
+    
     let upperSeparator: UIView = {
         let separator = UIView()
         separator.backgroundColor = .black
@@ -80,6 +86,12 @@ class RunningPaceController: UIViewController {
         return separator
     }()
     
+    let bottomSeparator: UIView = {
+        let separator = UIView()
+        separator.backgroundColor = .black
+        return separator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,9 +99,14 @@ class RunningPaceController: UIViewController {
         let button = UIBarButtonItem(image: #imageLiteral(resourceName: "cog"), style: .plain, target: self, action: #selector(showOptions))
         navigationItem.setRightBarButton(button, animated: true)
         
+        setup()
+        
+    }
+    
+    fileprivate func setup() {
         // get rid of black bar underneath navbar
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = UIColor(red: 234/255, green: 0, blue: 0, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 55/255, green: 96/255, blue: 254/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
         navigationController!.navigationBar.titleTextAttributes =
             [NSForegroundColorAttributeName: UIColor.white]
@@ -102,25 +119,31 @@ class RunningPaceController: UIViewController {
         timeHeader.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
         
         view.addSubview(timeContainer)
-        timeContainer.anchor(top: timeHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        timeContainer.anchor(top: timeHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 84)
         
         view.addSubview(distanceHeader)
         distanceHeader.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
         
         view.addSubview(distanceContainer)
-        distanceContainer.anchor(top: distanceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        distanceContainer.anchor(top: distanceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 84)
         
         view.addSubview(paceHeader)
         paceHeader.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
         
         view.addSubview(paceContainer)
-        paceContainer.anchor(top: paceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
+        paceContainer.anchor(top: paceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 84)
+        
+        view.addSubview(topSeparator)
+        topSeparator.anchor(top: timeHeader.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
         
         view.addSubview(upperSeparator)
         upperSeparator.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
         
         view.addSubview(lowerSeparator)
         lowerSeparator.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        
+        view.addSubview(bottomSeparator)
+        bottomSeparator.anchor(top: paceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
         
         view.backgroundColor = backgroundColor
     }
@@ -152,12 +175,12 @@ class RunningPaceController: UIViewController {
         }
     }
     
-    fileprivate func highlightViewRed(view: UIView) {
+    fileprivate func highlightViewRed(view: MissingFieldsProtocol) {
         
         
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            view.backgroundColor = .red
+            view.highlightMissing()
             
         }, completion: nil)
         
@@ -167,9 +190,9 @@ class RunningPaceController: UIViewController {
         
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.timeContainer.backgroundColor = containerColor
-            self.distanceContainer.backgroundColor = containerColor
-            self.paceContainer.backgroundColor = containerColor
+            self.timeContainer.clearMissing()
+            self.distanceContainer.clearMissing()
+            self.paceContainer.clearMissing()
             
         }, completion: nil)
     }

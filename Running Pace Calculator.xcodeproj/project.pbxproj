@@ -19,6 +19,7 @@
 		809582491ECB343E00084B13 /* DistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809582481ECB343E00084B13 /* DistanceView.swift */; };
 		8095824B1ECB344E00084B13 /* PaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095824A1ECB344E00084B13 /* PaceView.swift */; };
 		8095824E1ECB3A2100084B13 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095824D1ECB3A2100084B13 /* HeaderView.swift */; };
+		809582501ECB568300084B13 /* MissingFieldsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		809582481ECB343E00084B13 /* DistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceView.swift; sourceTree = "<group>"; };
 		8095824A1ECB344E00084B13 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
 		8095824D1ECB3A2100084B13 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingFieldsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				809582451ECB341700084B13 /* Views */,
 				8095822D1ECB329400084B13 /* RunningPaceController.swift */,
 				809582431ECB340400084B13 /* OptionsController.swift */,
+				8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */,
 			);
 			path = "Running Pace Calculator";
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				809582401ECB33D000084B13 /* AlertHelper.swift in Sources */,
+				809582501ECB568300084B13 /* MissingFieldsProtocol.swift in Sources */,
 				809582471ECB342600084B13 /* TimeView.swift in Sources */,
 				8095822E1ECB329400084B13 /* RunningPaceController.swift in Sources */,
 				809582491ECB343E00084B13 /* DistanceView.swift in Sources */,
