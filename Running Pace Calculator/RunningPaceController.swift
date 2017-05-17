@@ -18,7 +18,9 @@ enum CalculationType {
 let kmToMilesConstant: Double = 0.621371
 
 let containerColor: UIColor = UIColor(white: 0.98, alpha: 1)
-let backgroundColor: UIColor = UIColor.rgb(red: 220, green: 220, blue: 220)
+let backgroundColor: UIColor = UIColor.rgb(red: 240, green: 240, blue: 240)
+let gradientStartColor = UIColor.rgb(red: 152, green: 172, blue: 222).cgColor
+let gradientEndColor = UIColor.rgb(red: 192, green: 162, blue: 220).cgColor
 
 class RunningPaceController: UIViewController {
     
@@ -40,8 +42,8 @@ class RunningPaceController: UIViewController {
         container.clipsToBounds = false
         container.layer.shadowColor = UIColor.black.cgColor
         container.layer.shadowOpacity = 0.3
-        container.layer.shadowOffset = CGSize(width: 0, height: 3)
-        container.layer.shadowRadius = 2
+        container.layer.shadowOffset = CGSize(width: 0, height: 2)
+        container.layer.shadowRadius = 4
         return container
     }()
     
@@ -54,8 +56,8 @@ class RunningPaceController: UIViewController {
         container.clipsToBounds = false
         container.layer.shadowColor = UIColor.black.cgColor
         container.layer.shadowOpacity = 0.3
-        container.layer.shadowOffset = CGSize(width: 0, height: 3)
-        container.layer.shadowRadius = 2
+        container.layer.shadowOffset = CGSize(width: 0, height: 2)
+        container.layer.shadowRadius = 4
         return container
     }()
     
@@ -67,8 +69,8 @@ class RunningPaceController: UIViewController {
         container.clipsToBounds = false
         container.layer.shadowColor = UIColor.black.cgColor
         container.layer.shadowOpacity = 0.3
-        container.layer.shadowOffset = CGSize(width: 0, height: 3)
-        container.layer.shadowRadius = 2
+        container.layer.shadowOffset = CGSize(width: 0, height: 2)
+        container.layer.shadowRadius = 4
         return container
     }()
     
@@ -107,20 +109,20 @@ class RunningPaceController: UIViewController {
         self.view.addGestureRecognizer(gestureRecognizer)
         
         view.addSubview(timeContainer)
-        timeContainer.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 108)
+        timeContainer.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 90)
         
         view.addSubview(distanceContainer)
-        distanceContainer.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 108)
+        distanceContainer.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 30, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 90)
         
         view.addSubview(paceContainer)
-        paceContainer.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 108)
+        paceContainer.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 30, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 90)
 
         
         view.addSubview(bannerView)
         bannerView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
-//        view.addSubview(logoImage)
-//        logoImage.anchor(top: bottomSeparator.bottomAnchor, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
+        view.addSubview(logoImage)
+        logoImage.anchor(top: paceContainer.bottomAnchor, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
         
         view.backgroundColor = backgroundColor
     }
@@ -134,16 +136,12 @@ class RunningPaceController: UIViewController {
         navBar?.shadowImage = UIImage()
         navBar?.isTranslucent = true
         
-        print(UIApplication.shared.statusBarFrame.height + (navBar?.frame.height)!)
-        
         //Create View behind navigation bar and add gradient
         let behindView = UIView(frame: CGRect(x: 0, y:0, width: UIApplication.shared.statusBarFrame.width, height: UIApplication.shared.statusBarFrame.height + (navBar?.frame.height)!))
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = behindView.frame
-        let startColor = UIColor.rgb(red: 152, green: 172, blue: 222).cgColor
-        let endColor = UIColor.rgb(red: 192, green: 162, blue: 220).cgColor
-        gradientLayer.colors = [startColor, endColor]
+        gradientLayer.colors = [gradientStartColor, gradientEndColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         
@@ -151,12 +149,24 @@ class RunningPaceController: UIViewController {
         UIGraphicsBeginImageContext(gradientLayer.bounds.size)
         gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
         behindView.layer.insertSublayer(gradientLayer, at: 0)
+        behindView.layer.shadowColor = UIColor.black.cgColor
+        behindView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        behindView.layer.shadowRadius = 4.0
+        behindView.layer.shadowOpacity = 0.3
+        behindView.layer.masksToBounds = false
         
         self.navigationController?.view.insertSubview(behindView, belowSubview: navBar!)
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        timeContainer.setupButtons()
+        distanceContainer.setupButtons()
+        paceContainer.setupButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         let unit = userDefaults.getDistanceUnits()
         

@@ -23,6 +23,7 @@ class DistanceView: UIView, MissingFieldsProtocol {
     let headerName: UILabel = {
         let label = UILabel()
         label.text = "Distance"
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -49,6 +50,7 @@ class DistanceView: UIView, MissingFieldsProtocol {
         let button = UIButton(type: .system)
         button.setTitle("Choose event", for: .normal)
         button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.addTarget(self, action: #selector(chooseEventPressed), for: .touchUpInside)
         return button
     }()
@@ -84,9 +86,12 @@ class DistanceView: UIView, MissingFieldsProtocol {
     
     lazy var calculateButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Calculate Distance", for: .normal)
+        button.setTitle("Calculate", for: .normal)
         button.addTarget(self, action: #selector(calculateDistance), for: .touchUpInside)
-        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
+        button.tintColor = .white
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 4
+        button.clipsToBounds = true
         return button
     }()
     
@@ -109,6 +114,7 @@ class DistanceView: UIView, MissingFieldsProtocol {
         toolBar.barStyle = UIBarStyle.default
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(donePressed))
+        doneButton.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
@@ -118,26 +124,35 @@ class DistanceView: UIView, MissingFieldsProtocol {
         addSubview(hiddenDistance)
         
         addSubview(headerName)
-        headerName.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
+        headerName.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
         
         addSubview(orLabel)
-        orLabel.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        orLabel.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         orLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(eventButton)
-        eventButton.anchor(top: headerName.bottomAnchor, left: orLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 30)
+        eventButton.anchor(top: headerName.bottomAnchor, left: orLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 120, height: 30)
         
         addSubview(distanceField)
-        distanceField.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: orLabel.leftAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 70, height: 30)
+        distanceField.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: orLabel.leftAnchor, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 70, height: 30)
         
         addSubview(calculateButton)
-        calculateButton.anchor(top: orLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 30)
-        calculateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        calculateButton.anchor(top: nil, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -15, paddingRight: 15, width: 120, height: 30)
         
         addSubview(resetButton)
-        resetButton.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 6, width: 28, height: 24)
-        
-        
+        resetButton.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 6, width: 32, height: 24)
+
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if calculateButton.frame.contains(point) {
+            return calculateButton;
+        }
+        return super.hitTest(point, with: event)
+    }
+    
+    func setupButtons() {
+        calculateButton.applyGradient(colours: [gradientStartColor, gradientEndColor], startPoint: CGPoint(x: 0.0, y: 0.5), endPoint: CGPoint(x: 1.0, y: 0.5))
     }
     
     func highlightMissing() {

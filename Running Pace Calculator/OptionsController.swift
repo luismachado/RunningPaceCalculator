@@ -90,6 +90,7 @@ class OptionsCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(chooseUnitsPressed), for: .touchUpInside)
         button.contentHorizontalAlignment = .right
+        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         return button
     }()
     
@@ -129,6 +130,7 @@ class OptionsCell: UITableViewCell {
         toolBar.barStyle = UIBarStyle.default
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(donePressed))
+        doneButton.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true

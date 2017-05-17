@@ -26,12 +26,12 @@
                                 <color key="tintColor" red="1" green="1" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.21568627450980393" green="0.37647058823529411" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.59607843137254901" green="0.67450980392156867" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="yl9-iM-2Xw" secondAttribute="trailing" constant="12" id="9vN-f8-JUh"/>
-                            <constraint firstItem="yl9-iM-2Xw" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="11" id="EK8-JN-lDm"/>
-                            <constraint firstItem="yl9-iM-2Xw" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="153" id="dHI-uq-HtS"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="yl9-iM-2Xw" secondAttribute="bottom" constant="174" id="jDM-8y-fK5"/>
+                            <constraint firstItem="yl9-iM-2Xw" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="153" id="Cco-1v-seR"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="yl9-iM-2Xw" secondAttribute="bottom" constant="174" id="FwS-4P-eoB"/>
+                            <constraint firstItem="yl9-iM-2Xw" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="11" id="NtF-OH-uRl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yl9-iM-2Xw" secondAttribute="trailing" constant="12" id="Waa-Un-s07"/>
                         </constraints>
                     </view>
                 </viewController>

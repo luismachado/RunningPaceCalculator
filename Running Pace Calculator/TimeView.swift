@@ -15,6 +15,7 @@ class TimeView: UIView, MissingFieldsProtocol {
     let headerName: UILabel = {
         let label = UILabel()
         label.text = "Time"
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -48,11 +49,17 @@ class TimeView: UIView, MissingFieldsProtocol {
         return tf
     }()
     
+    let startColor = UIColor.rgb(red: 152, green: 172, blue: 222)
+    let endColor = UIColor.rgb(red: 192, green: 162, blue: 220)
+    
     lazy var calculateButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Calculate Time", for: .normal)
+        button.setTitle("Calculate", for: .normal)
         button.addTarget(self, action: #selector(calculateTime), for: .touchUpInside)
-        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
+        button.tintColor = .white
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 4
+        button.clipsToBounds = true
         return button
     }()
     
@@ -92,18 +99,28 @@ class TimeView: UIView, MissingFieldsProtocol {
         stackView.distribution = .equalSpacing
         
         addSubview(headerName)
-        headerName.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 6, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
+        headerName.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
         
         addSubview(stackView)
-        stackView.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 30)
+        stackView.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 30)
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(resetButton)
-        resetButton.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 6, width: 28, height: 24)
+        resetButton.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 6, width: 32, height: 24)
         
         addSubview(calculateButton)
-        calculateButton.anchor(top: stackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 30)
-        calculateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        calculateButton.anchor(top: nil, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -15, paddingRight: 15, width: 120, height: 30)
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if calculateButton.frame.contains(point) {
+            return calculateButton;
+        }
+        return super.hitTest(point, with: event)
+    }
+    
+    func setupButtons() {
+        calculateButton.applyGradient(colours: [gradientStartColor, gradientEndColor], startPoint: CGPoint(x: 0.0, y: 0.5), endPoint: CGPoint(x: 1.0, y: 0.5))
     }
     
     func setTime(hours: String, minutes: String, seconds: String) {
@@ -142,9 +159,6 @@ class TimeView: UIView, MissingFieldsProtocol {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
 }
 
 extension TimeView: UITextFieldDelegate {
