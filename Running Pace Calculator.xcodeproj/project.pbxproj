@@ -19,7 +19,6 @@
 		809582471ECB342600084B13 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809582461ECB342600084B13 /* TimeView.swift */; };
 		809582491ECB343E00084B13 /* DistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809582481ECB343E00084B13 /* DistanceView.swift */; };
 		8095824B1ECB344E00084B13 /* PaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095824A1ECB344E00084B13 /* PaceView.swift */; };
-		8095824E1ECB3A2100084B13 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095824D1ECB3A2100084B13 /* HeaderView.swift */; };
 		809582501ECB568300084B13 /* MissingFieldsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +38,6 @@
 		809582461ECB342600084B13 /* TimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		809582481ECB343E00084B13 /* DistanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceView.swift; sourceTree = "<group>"; };
 		8095824A1ECB344E00084B13 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
-		8095824D1ECB3A2100084B13 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingFieldsProtocol.swift; sourceTree = "<group>"; };
 		93D81083825D4CF7B2B5FB62 /* Pods_Running_Pace_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Running_Pace_Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,7 +89,6 @@
 				809582461ECB342600084B13 /* TimeView.swift */,
 				809582481ECB343E00084B13 /* DistanceView.swift */,
 				8095824A1ECB344E00084B13 /* PaceView.swift */,
-				8095824D1ECB3A2100084B13 /* HeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,7 +256,6 @@
 				809582421ECB33EE00084B13 /* UDWrapper.swift in Sources */,
 				8095823E1ECB33BA00084B13 /* Extensions.swift in Sources */,
 				809582441ECB340400084B13 /* OptionsController.swift in Sources */,
-				8095824E1ECB3A2100084B13 /* HeaderView.swift in Sources */,
 				8095822C1ECB329400084B13 /* AppDelegate.swift in Sources */,
 				8095824B1ECB344E00084B13 /* PaceView.swift in Sources */,
 			);

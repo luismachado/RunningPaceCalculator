@@ -12,6 +12,12 @@ class PaceView: UIView, MissingFieldsProtocol {
     
     var racePaceController: RunningPaceController?
     
+    let headerName: UILabel = {
+        let label = UILabel()
+        label.text = "Pace"
+        return label
+    }()
+    
     let minutesField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "min"
@@ -34,7 +40,8 @@ class PaceView: UIView, MissingFieldsProtocol {
     
     lazy var resetButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "erase"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "erase-1"), for: .normal)
+        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         button.addTarget(self, action: #selector(resetFields), for: .touchUpInside)
         return button
     }()
@@ -54,6 +61,7 @@ class PaceView: UIView, MissingFieldsProtocol {
         let button = UIButton(type: .system)
         button.setTitle("Calculate Pace", for: .normal)
         button.addTarget(self, action: #selector(calculatePace), for: .touchUpInside)
+        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         return button
     }()
     
@@ -77,8 +85,11 @@ class PaceView: UIView, MissingFieldsProtocol {
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         
+        addSubview(headerName)
+        headerName.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
+        
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 150, height: 30)
+        stackView.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 150, height: 30)
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(calculateButton)
@@ -86,8 +97,7 @@ class PaceView: UIView, MissingFieldsProtocol {
         calculateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(resetButton)
-        resetButton.anchor(top: nil, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 16, width: 30, height: 30)
-        resetButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        resetButton.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 6, width: 28, height: 24)
     }
     
     func highlightMissing() {

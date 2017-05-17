@@ -20,6 +20,12 @@ class DistanceView: UIView, MissingFieldsProtocol {
     
     var events:[Event] = [Event(name: "5K", distance: 5.000),Event(name: "10K", distance: 10.000),Event(name: "Half-Marathon", distance: 21.098),Event(name: "Marathon", distance: 42.196)]
     
+    let headerName: UILabel = {
+        let label = UILabel()
+        label.text = "Distance"
+        return label
+    }()
+    
     lazy var eventsPickerView: UIPickerView = {
         let picker = UIPickerView()
         picker.delegate = self
@@ -42,6 +48,7 @@ class DistanceView: UIView, MissingFieldsProtocol {
     let eventButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Choose event", for: .normal)
+        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         button.addTarget(self, action: #selector(chooseEventPressed), for: .touchUpInside)
         return button
     }()
@@ -65,7 +72,8 @@ class DistanceView: UIView, MissingFieldsProtocol {
     
     lazy var resetButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "erase"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "erase-1"), for: .normal)
+        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         button.addTarget(self, action: #selector(resetFields), for: .touchUpInside)
         return button
     }()
@@ -78,6 +86,7 @@ class DistanceView: UIView, MissingFieldsProtocol {
         let button = UIButton(type: .system)
         button.setTitle("Calculate Distance", for: .normal)
         button.addTarget(self, action: #selector(calculateDistance), for: .touchUpInside)
+        button.tintColor = UIColor.rgb(red: 152, green: 172, blue: 222)
         return button
     }()
     
@@ -108,23 +117,25 @@ class DistanceView: UIView, MissingFieldsProtocol {
         hiddenDistance.inputAccessoryView = toolBar
         addSubview(hiddenDistance)
         
+        addSubview(headerName)
+        headerName.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
+        
         addSubview(orLabel)
-        orLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        orLabel.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         orLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(eventButton)
-        eventButton.anchor(top: topAnchor, left: orLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 30)
+        eventButton.anchor(top: headerName.bottomAnchor, left: orLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 30)
         
         addSubview(distanceField)
-        distanceField.anchor(top: topAnchor, left: nil, bottom: nil, right: orLabel.leftAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 70, height: 30)
+        distanceField.anchor(top: headerName.bottomAnchor, left: nil, bottom: nil, right: orLabel.leftAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 70, height: 30)
         
         addSubview(calculateButton)
         calculateButton.anchor(top: orLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 30)
         calculateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         addSubview(resetButton)
-        resetButton.anchor(top: nil, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 16, width: 30, height: 30)
-        resetButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        resetButton.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 6, paddingLeft: 0, paddingBottom: 0, paddingRight: 6, width: 28, height: 24)
         
         
     }

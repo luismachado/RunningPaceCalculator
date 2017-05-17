@@ -18,7 +18,7 @@ enum CalculationType {
 let kmToMilesConstant: Double = 0.621371
 
 let containerColor: UIColor = UIColor(white: 0.98, alpha: 1)
-let backgroundColor: UIColor = UIColor.rgb(red: 250, green: 250, blue: 250)
+let backgroundColor: UIColor = UIColor.rgb(red: 220, green: 220, blue: 220)
 
 class RunningPaceController: UIViewController {
     
@@ -32,72 +32,44 @@ class RunningPaceController: UIViewController {
         return view
     }()
     
-    let timeHeader: HeaderView = {
-        let header = HeaderView()
-        header.headerName.text = "Time"
-        header.backgroundColor = .white
-        return header
-    }()
-    
     lazy var timeContainer: TimeView = {
         let container = TimeView()
         container.racePaceController = self
         container.backgroundColor = containerColor
+        container.layer.cornerRadius = 6
+        container.clipsToBounds = false
+        container.layer.shadowColor = UIColor.black.cgColor
+        container.layer.shadowOpacity = 0.3
+        container.layer.shadowOffset = CGSize(width: 0, height: 3)
+        container.layer.shadowRadius = 2
         return container
-        
-    }()
-    
-    let distanceHeader: HeaderView = {
-        let header = HeaderView()
-        header.headerName.text = "Distance"
-        header.backgroundColor = .white
-        return header
     }()
     
     lazy var distanceContainer: DistanceView = {
         let container = DistanceView()
         container.racePaceController = self
         container.userDefaults = self.userDefaults
+        container.layer.cornerRadius = 6
         container.backgroundColor = containerColor
+        container.clipsToBounds = false
+        container.layer.shadowColor = UIColor.black.cgColor
+        container.layer.shadowOpacity = 0.3
+        container.layer.shadowOffset = CGSize(width: 0, height: 3)
+        container.layer.shadowRadius = 2
         return container
-    }()
-    
-    let paceHeader: HeaderView = {
-        let header = HeaderView()
-        header.headerName.text = "Pace"
-        header.backgroundColor = .white
-        return header
     }()
     
     lazy var paceContainer: PaceView = {
         let container = PaceView()
         container.racePaceController = self
+        container.layer.cornerRadius = 6
         container.backgroundColor = containerColor
+        container.clipsToBounds = false
+        container.layer.shadowColor = UIColor.black.cgColor
+        container.layer.shadowOpacity = 0.3
+        container.layer.shadowOffset = CGSize(width: 0, height: 3)
+        container.layer.shadowRadius = 2
         return container
-    }()
-    
-    let topSeparator: UIView = {
-        let separator = UIView()
-        separator.backgroundColor = .black
-        return separator
-    }()
-    
-    let upperSeparator: UIView = {
-        let separator = UIView()
-        separator.backgroundColor = .black
-        return separator
-    }()
-    
-    let lowerSeparator: UIView = {
-        let separator = UIView()
-        separator.backgroundColor = .black
-        return separator
-    }()
-    
-    let bottomSeparator: UIView = {
-        let separator = UIView()
-        separator.backgroundColor = .black
-        return separator
     }()
     
     let logoImage: UIImageView = {
@@ -134,41 +106,21 @@ class RunningPaceController: UIViewController {
         gestureRecognizer.cancelsTouchesInView = false
         self.view.addGestureRecognizer(gestureRecognizer)
         
-        view.addSubview(timeHeader)
-        timeHeader.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
-        
         view.addSubview(timeContainer)
-        timeContainer.anchor(top: timeHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 84)
-        
-        view.addSubview(distanceHeader)
-        distanceHeader.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
+        timeContainer.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 108)
         
         view.addSubview(distanceContainer)
-        distanceContainer.anchor(top: distanceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 84)
-        
-        view.addSubview(paceHeader)
-        paceHeader.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 24)
+        distanceContainer.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 108)
         
         view.addSubview(paceContainer)
-        paceContainer.anchor(top: paceHeader.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 84)
-        
-        view.addSubview(topSeparator)
-        topSeparator.anchor(top: timeHeader.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-        
-        view.addSubview(upperSeparator)
-        upperSeparator.anchor(top: timeContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-        
-        view.addSubview(lowerSeparator)
-        lowerSeparator.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-        
-        view.addSubview(bottomSeparator)
-        bottomSeparator.anchor(top: paceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        paceContainer.anchor(top: distanceContainer.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 108)
+
         
         view.addSubview(bannerView)
         bannerView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
-        view.addSubview(logoImage)
-        logoImage.anchor(top: bottomSeparator.bottomAnchor, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
+//        view.addSubview(logoImage)
+//        logoImage.anchor(top: bottomSeparator.bottomAnchor, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
         
         view.backgroundColor = backgroundColor
     }
