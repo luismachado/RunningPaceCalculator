@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40D306F6B9BFDB5A654CB8A2 /* Pods_Running_Pace_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D81083825D4CF7B2B5FB62 /* Pods_Running_Pace_Calculator.framework */; };
 		8095822C1ECB329400084B13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095822B1ECB329400084B13 /* AppDelegate.swift */; };
 		8095822E1ECB329400084B13 /* RunningPaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8095822D1ECB329400084B13 /* RunningPaceController.swift */; };
 		809582331ECB329400084B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809582321ECB329400084B13 /* Assets.xcassets */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		003282812B2E03C255B75370 /* Pods-Running Pace Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Running Pace Calculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Running Pace Calculator/Pods-Running Pace Calculator.debug.xcconfig"; sourceTree = "<group>"; };
+		03C077E69EDB37F873D5908B /* Pods-Running Pace Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Running Pace Calculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-Running Pace Calculator/Pods-Running Pace Calculator.release.xcconfig"; sourceTree = "<group>"; };
 		809582281ECB329400084B13 /* Running Pace Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Running Pace Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8095822B1ECB329400084B13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8095822D1ECB329400084B13 /* RunningPaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPaceController.swift; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		8095824A1ECB344E00084B13 /* PaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaceView.swift; sourceTree = "<group>"; };
 		8095824D1ECB3A2100084B13 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		8095824F1ECB568300084B13 /* MissingFieldsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingFieldsProtocol.swift; sourceTree = "<group>"; };
+		93D81083825D4CF7B2B5FB62 /* Pods_Running_Pace_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Running_Pace_Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40D306F6B9BFDB5A654CB8A2 /* Pods_Running_Pace_Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,8 @@
 			children = (
 				8095822A1ECB329400084B13 /* Running Pace Calculator */,
 				809582291ECB329400084B13 /* Products */,
+				F704A9BA00B11C38DFE57BBE /* Pods */,
+				A5E2298148447A11C4D48640 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +111,23 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		A5E2298148447A11C4D48640 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93D81083825D4CF7B2B5FB62 /* Pods_Running_Pace_Calculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F704A9BA00B11C38DFE57BBE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				003282812B2E03C255B75370 /* Pods-Running Pace Calculator.debug.xcconfig */,
+				03C077E69EDB37F873D5908B /* Pods-Running Pace Calculator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8095823A1ECB329400084B13 /* Build configuration list for PBXNativeTarget "Running Pace Calculator" */;
 			buildPhases = (
+				FC817140C82C11DF3FFA9EED /* [CP] Check Pods Manifest.lock */,
 				809582241ECB329400084B13 /* Sources */,
 				809582251ECB329400084B13 /* Frameworks */,
 				809582261ECB329400084B13 /* Resources */,
+				D6C26AC1B63E63CCF94EDEF6 /* [CP] Embed Pods Frameworks */,
+				4133A87D8E44164893569E18 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,6 +197,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4133A87D8E44164893569E18 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Running Pace Calculator/Pods-Running Pace Calculator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6C26AC1B63E63CCF94EDEF6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Running Pace Calculator/Pods-Running Pace Calculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC817140C82C11DF3FFA9EED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		809582241ECB329400084B13 /* Sources */ = {
@@ -297,6 +372,7 @@
 		};
 		8095823B1ECB329400084B13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 003282812B2E03C255B75370 /* Pods-Running Pace Calculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MJHBLUH3VK;
@@ -311,6 +387,7 @@
 		};
 		8095823C1ECB329400084B13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03C077E69EDB37F873D5908B /* Pods-Running Pace Calculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MJHBLUH3VK;

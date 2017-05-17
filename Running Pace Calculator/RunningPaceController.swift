@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 enum CalculationType {
     case time
@@ -17,16 +18,17 @@ enum CalculationType {
 let kmToMilesConstant: Double = 0.621371
 
 let containerColor: UIColor = UIColor(white: 0.98, alpha: 1)
-let backgroundColor: UIColor = UIColor(white: 0.9, alpha: 1)
+let backgroundColor: UIColor = UIColor.rgb(red: 250, green: 250, blue: 250)
 
 class RunningPaceController: UIViewController {
     
     var textFieldBeingEdited: UITextField?
     let userDefaults = UDWrapper()
     
-    let bannerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
+    let bannerView: GADBannerView = {
+        let view = GADBannerView()
+        view.backgroundColor = .white
+        view.adUnitID = ""
         return view
     }()
     
@@ -115,12 +117,15 @@ class RunningPaceController: UIViewController {
         
         setup()
         
+//        bannerView.rootViewController = self
+//        let request = GADRequest()
+//        bannerView.load(request)
+        
     }
     
     fileprivate func setup() {
-        // get rid of black bar underneath navbar
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = UIColor(red: 55/255, green: 96/255, blue: 254/255, alpha: 1)
+        
+        setNavBarColor()
         navigationController?.navigationBar.tintColor = .white
         navigationController!.navigationBar.titleTextAttributes =
             [NSForegroundColorAttributeName: UIColor.white]
@@ -166,6 +171,37 @@ class RunningPaceController: UIViewController {
         logoImage.anchor(top: bottomSeparator.bottomAnchor, left: view.leftAnchor, bottom: bannerView.topAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
         
         view.backgroundColor = backgroundColor
+    }
+    
+    func setNavBarColor() {
+        
+        let navBar = self.navigationController?.navigationBar
+        
+        //Make navigation bar transparent
+        navBar?.setBackgroundImage(UIImage(), for: .default)
+        navBar?.shadowImage = UIImage()
+        navBar?.isTranslucent = true
+        
+        print(UIApplication.shared.statusBarFrame.height + (navBar?.frame.height)!)
+        
+        //Create View behind navigation bar and add gradient
+        let behindView = UIView(frame: CGRect(x: 0, y:0, width: UIApplication.shared.statusBarFrame.width, height: UIApplication.shared.statusBarFrame.height + (navBar?.frame.height)!))
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = behindView.frame
+        let startColor = UIColor.rgb(red: 152, green: 172, blue: 222).cgColor
+        let endColor = UIColor.rgb(red: 192, green: 162, blue: 220).cgColor
+        gradientLayer.colors = [startColor, endColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        
+        // Render the gradient to UIImage
+        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        behindView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        self.navigationController?.view.insertSubview(behindView, belowSubview: navBar!)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
