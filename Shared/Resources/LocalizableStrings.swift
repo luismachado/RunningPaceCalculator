@@ -25,6 +25,17 @@ internal enum Localized {
     }
   }
 
+  internal enum Row {
+    /// Calculate
+    internal static let calculate = Localized.tr("Localizable", "row.calculate")
+    internal enum Distance {
+      /// Choose Event
+      internal static let choose = Localized.tr("Localizable", "row.distance.choose")
+      /// or
+      internal static let or = Localized.tr("Localizable", "row.distance.or")
+    }
+  }
+
   internal enum RowType {
     /// Distance
     internal static let distance = Localized.tr("Localizable", "row_type.distance")
@@ -85,4 +96,4 @@ public final class BundleToken {
     #endif
   }()
 }
-// swiftlint:enable convenience_type
+

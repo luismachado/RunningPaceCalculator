@@ -45,6 +45,12 @@
 		8023F61E284F840400ADA815 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8023F61C284F840400ADA815 /* Units.swift */; };
 		8023F6202850A5DF00ADA815 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8023F61F2850A5DF00ADA815 /* Distance.swift */; };
 		8023F6212850A5DF00ADA815 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8023F61F2850A5DF00ADA815 /* Distance.swift */; };
+		80C8C9362850E9CB00323A15 /* TextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C9352850E9CB00323A15 /* TextField+Style.swift */; };
+		80C8C9372850E9CB00323A15 /* TextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C9352850E9CB00323A15 /* TextField+Style.swift */; };
+		80C8C9392850E9E800323A15 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C9382850E9E800323A15 /* CustomTextField.swift */; };
+		80C8C93A2850E9E800323A15 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C9382850E9E800323A15 /* CustomTextField.swift */; };
+		80C8C93C2850E9F400323A15 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C93B2850E9F400323A15 /* CustomPicker.swift */; };
+		80C8C93D2850E9F400323A15 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C93B2850E9F400323A15 /* CustomPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +96,9 @@
 		8023F618284F83A200ADA815 /* UDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDWrapper.swift; sourceTree = "<group>"; };
 		8023F61C284F840400ADA815 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		8023F61F2850A5DF00ADA815 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		80C8C9352850E9CB00323A15 /* TextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Style.swift"; sourceTree = "<group>"; };
+		80C8C9382850E9E800323A15 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		80C8C93B2850E9F400323A15 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +149,7 @@
 		8023F59D284E04BC00ADA815 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				80C8C9342850E9BC00323A15 /* SwiftUI */,
 				8023F61B284F83F200ADA815 /* Model */,
 				8023F610284F804900ADA815 /* Style */,
 				8023F60C284F7FFC00ADA815 /* Extensions */,
@@ -232,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				8023F615284F814500ADA815 /* Button+Style.swift */,
+				80C8C9352850E9CB00323A15 /* TextField+Style.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -251,6 +262,15 @@
 				8023F61F2850A5DF00ADA815 /* Distance.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		80C8C9342850E9BC00323A15 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				80C8C9382850E9E800323A15 /* CustomTextField.swift */,
+				80C8C93B2850E9F400323A15 /* CustomPicker.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,8 +446,10 @@
 				8023F5C8284E04BC00ADA815 /* ContentView.swift in Sources */,
 				8023F61D284F840400ADA815 /* Units.swift in Sources */,
 				8023F612284F805B00ADA815 /* AppConstants.swift in Sources */,
+				80C8C9362850E9CB00323A15 /* TextField+Style.swift in Sources */,
 				8023F619284F83A200ADA815 /* UDWrapper.swift in Sources */,
 				8023F6202850A5DF00ADA815 /* Distance.swift in Sources */,
+				80C8C93C2850E9F400323A15 /* CustomPicker.swift in Sources */,
 				8023F601284E31A400ADA815 /* LocalizableStrings.swift in Sources */,
 				8023F616284F814500ADA815 /* Button+Style.swift in Sources */,
 				8023F5E1284E05C200ADA815 /* RowView.swift in Sources */,
@@ -436,6 +458,7 @@
 				8023F5DB284E04D700ADA815 /* RunningPaceView.swift in Sources */,
 				8023F60E284F800B00ADA815 /* View+Extensions.swift in Sources */,
 				8023F5DE284E050500ADA815 /* RunningPaceViewModel.swift in Sources */,
+				80C8C9392850E9E800323A15 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,8 +469,10 @@
 				8023F5C9284E04BC00ADA815 /* ContentView.swift in Sources */,
 				8023F61E284F840400ADA815 /* Units.swift in Sources */,
 				8023F613284F805B00ADA815 /* AppConstants.swift in Sources */,
+				80C8C9372850E9CB00323A15 /* TextField+Style.swift in Sources */,
 				8023F61A284F83A200ADA815 /* UDWrapper.swift in Sources */,
 				8023F6212850A5DF00ADA815 /* Distance.swift in Sources */,
+				80C8C93D2850E9F400323A15 /* CustomPicker.swift in Sources */,
 				8023F602284E31A400ADA815 /* LocalizableStrings.swift in Sources */,
 				8023F617284F814500ADA815 /* Button+Style.swift in Sources */,
 				8023F5E2284E05C200ADA815 /* RowView.swift in Sources */,
@@ -456,6 +481,7 @@
 				8023F5DC284E04D700ADA815 /* RunningPaceView.swift in Sources */,
 				8023F60F284F800B00ADA815 /* View+Extensions.swift in Sources */,
 				8023F5DF284E050500ADA815 /* RunningPaceViewModel.swift in Sources */,
+				80C8C93A2850E9E800323A15 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

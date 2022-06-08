@@ -8,6 +8,12 @@
 "row_type.distance" = "Distance";
 "row_type.pace" = "Pace";
 
+// MARK: - Row Content
+
+"row.calculate" = "Calculate";
+"row.distance.or" = "or";
+"row.distance.choose" = "Choose Event";
+
 // MARK: - Units
 
 "units.kilometers.title" = "Kilometers";
