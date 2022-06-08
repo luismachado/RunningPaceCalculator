@@ -68,7 +68,7 @@
 		8023F59E284E04BC00ADA815 /* RunningPaceCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPaceCalculatorApp.swift; sourceTree = "<group>"; };
 		8023F59F284E04BC00ADA815 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8023F5A0284E04BC00ADA815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8023F5A5284E04BC00ADA815 /* RunningPaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningPaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8023F5A5284E04BC00ADA815 /* Running Pace Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Running Pace Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8023F5AB284E04BC00ADA815 /* RunningPaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningPaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8023F5AD284E04BC00ADA815 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		8023F5B2284E04BC00ADA815 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +154,7 @@
 		8023F5A6284E04BC00ADA815 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8023F5A5284E04BC00ADA815 /* RunningPaceCalculator.app */,
+				8023F5A5284E04BC00ADA815 /* Running Pace Calculator.app */,
 				8023F5AB284E04BC00ADA815 /* RunningPaceCalculator.app */,
 				8023F5B2284E04BC00ADA815 /* Tests iOS.xctest */,
 				8023F5BE284E04BC00ADA815 /* Tests macOS.xctest */,
@@ -274,7 +274,7 @@
 				8023F5EA284E0D2800ADA815 /* Neumorphic */,
 			);
 			productName = "RunningPaceCalculator (iOS)";
-			productReference = 8023F5A5284E04BC00ADA815 /* RunningPaceCalculator.app */;
+			productReference = 8023F5A5284E04BC00ADA815 /* Running Pace Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8023F5AA284E04BC00ADA815 /* RunningPaceCalculator (macOS) */ = {
@@ -609,7 +609,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B6SZ2V5H75;
+				DEVELOPMENT_TEAM = MJHBLUH3VK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -622,9 +622,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = luismachado.RunningPaceCalculator;
-				PRODUCT_NAME = RunningPaceCalculator;
+				MARKETING_VERSION = 2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luismachado.Running-Pace-Calculator";
+				PRODUCT_NAME = "Running Pace Calculator";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -639,7 +639,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B6SZ2V5H75;
+				DEVELOPMENT_TEAM = MJHBLUH3VK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -652,9 +652,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = luismachado.RunningPaceCalculator;
-				PRODUCT_NAME = RunningPaceCalculator;
+				MARKETING_VERSION = 2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luismachado.Running-Pace-Calculator";
+				PRODUCT_NAME = "Running Pace Calculator";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -672,7 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B6SZ2V5H75;
+				DEVELOPMENT_TEAM = MJHBLUH3VK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -682,8 +682,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = luismachado.RunningPaceCalculator;
+				MARKETING_VERSION = 2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luismachado.Running-Pace-Calculator";
 				PRODUCT_NAME = RunningPaceCalculator;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -700,7 +700,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B6SZ2V5H75;
+				DEVELOPMENT_TEAM = MJHBLUH3VK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -710,8 +710,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = luismachado.RunningPaceCalculator;
+				MARKETING_VERSION = 2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luismachado.Running-Pace-Calculator";
 				PRODUCT_NAME = RunningPaceCalculator;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
