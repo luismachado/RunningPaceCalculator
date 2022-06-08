@@ -1,0 +1,50 @@
+{
+  "pins" : [
+    {
+      "identity" : "anycodable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Flight-School/AnyCodable",
+      "state" : {
+        "revision" : "f9fda69a7b704d46fb5123005f2f7e43dbb8a0fa",
+        "version" : "0.6.5"
+      }
+    },
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
+      "state" : {
+        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
+        "version" : "4.2.2"
+      }
+    },
+    {
+      "identity" : "neumorphic",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/costachung/neumorphic.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "ece63559ba075e2546600450c37cde82cc463537"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "2e63d0061da449ad0ed130768d05dceb1496de44",
+        "version" : "5.12.5"
+      }
+    },
+    {
+      "identity" : "xcore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zmian/xcore",
+      "state" : {
+        "branch" : "main",
+        "revision" : "22ee1377686531cb3c909e57b1325fd10fed1883"
+      }
+    }
+  ],
+  "version" : 2
+}

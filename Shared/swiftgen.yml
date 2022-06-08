@@ -1,0 +1,8 @@
+strings:
+  # App
+  - inputs: Resources/Localizable.strings
+    outputs:
+      - templatePath: BuildTools/Templates/strings.stencil
+        params:
+          enumName: Localized
+        output: Resources/LocalizableStrings.swift

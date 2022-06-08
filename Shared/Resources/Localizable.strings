@@ -1,0 +1,29 @@
+// MARK: - Running Pace View
+
+"running_pace_view.title" = "Race Pace Calculator";
+
+// MARK: - Row Type
+
+"row_type.time" = "Time";
+"row_type.distance" = "Distance";
+"row_type.pace" = "Pace";
+
+// MARK: - Units
+
+"units.kilometers.title" = "Kilometers";
+"units.kilometers.shortened" = "km";
+"units.miles.title" = "Miles";
+"units.miles.shortened" = "mi";
+
+// MARK: - Distances
+
+"distance.title.five_k" = "5K";
+"distance.title.ten_k" = "10K";
+"distance.title.half_marathon" = "Half Marathon";
+"distance.title.marathon" = "Marathon";
+
+// MARK: - Time Units
+
+"time_units.hour"= "hr";
+"time_units.minute"= "min";
+"time_units.second"= "sec";
