@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public enum RowType {
     typealias L = Localized.RowType
@@ -37,6 +38,41 @@ final class RunningPaceViewModel: ObservableObject {
     // When we try to calculate the requested value and necessary values are
     // empty, we need to highlight them.
     @Published var missingFields: [RowType] = []
+    @Published var showMissingFieldsAlert: Bool = false
+
+    var missingFieldsAlertMessage: String? {
+        guard !missingFields.isEmpty else {
+            return nil
+        }
+
+        return missingFields
+            .map { $0.title }
+            .joined(separator: " and ")
+            .appending(" not filled.")
+    }
+
+    private func alertAboutMissingFields(required: [RowType]) {
+        self.missingFields.removeAll()
+
+        required.forEach {
+            switch $0 {
+                case .time:
+                    if timeSeconds.isNil {
+                        self.missingFields.append(.time)
+                    }
+                case .distance:
+                    if distance.isNil {
+                        self.missingFields.append(.distance)
+                    }
+                case .pace:
+                    if paceSeconds.isNil {
+                        self.missingFields.append(.pace)
+                    }
+            }
+        }
+
+        showMissingFieldsAlert = !self.missingFields.isEmpty
+    }
 
     var distanceUnit: Units {
         UDWrapper.live.getDistanceUnits()
@@ -71,15 +107,13 @@ final class RunningPaceViewModel: ObservableObject {
 
     public func setDistanceFromPicker(stringValue: String) {
         if let selectedDistanceNormalized = Distance(title: stringValue) {
-            print("SELECTED DISTANCE \(selectedDistanceNormalized.distance)")
-            print("TEXT \(String(selectedDistanceNormalized.distance))")
-            DispatchQueue.main.async {
-                self.distanceValue = String(selectedDistanceNormalized.distance)
-            }
+            self.distanceValue = String(selectedDistanceNormalized.distance)
         }
     }
 
     public func calculate(kind: RowType) {
+        missingFields.removeAll()
+
         switch kind {
             case .time:
                calculateTime()
@@ -91,15 +125,11 @@ final class RunningPaceViewModel: ObservableObject {
     }
 
     private func calculateTime() {
-        guard let paceSeconds = paceSeconds else {
-            // TODO WARNING
-            missingFields = [.pace]
-            return
-        }
-
-        guard let distance = distance else {
-            // TODO WARNING
-            missingFields = [.distance]
+        guard
+            let distance = distance,
+            let paceSeconds = paceSeconds
+        else {
+            alertAboutMissingFields(required: [.distance, .pace])
             return
         }
 
@@ -114,15 +144,11 @@ final class RunningPaceViewModel: ObservableObject {
     }
 
     private func calculateDistance() {
-        guard let paceSeconds = paceSeconds else {
-            // TODO WARNING
-            missingFields = [.pace]
-            return
-        }
-
-        guard let timeSeconds = timeSeconds else {
-            // TODO WARNING
-            missingFields = [.time]
+        guard
+            let timeSeconds = timeSeconds,
+            let paceSeconds = paceSeconds
+        else {
+            alertAboutMissingFields(required: [.time, .pace])
             return
         }
 
@@ -131,15 +157,11 @@ final class RunningPaceViewModel: ObservableObject {
     }
 
     private func calculatePace() {
-        guard let timeSeconds = timeSeconds else {
-            // TODO WARNING
-            missingFields = [.time]
-            return
-        }
-
-        guard let distance = distance else {
-            // TODO WARNING
-            missingFields = [.distance]
+        guard
+            let timeSeconds = timeSeconds,
+            let distance = distance
+        else {
+            alertAboutMissingFields(required: [.time, .distance])
             return
         }
 

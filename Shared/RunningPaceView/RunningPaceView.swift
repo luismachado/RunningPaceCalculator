@@ -22,6 +22,12 @@ struct RunningPaceView: View {
         }
         .vAlign(.top)
         .padding()
+        .alert(isPresented: $viewModel.showMissingFieldsAlert) {
+                Alert(
+                    title: Text("Missing Fields"),
+                    message: Text("\(viewModel.missingFieldsAlertMessage ?? "")")
+                )
+            }
     }
 
     private var header: some View {
