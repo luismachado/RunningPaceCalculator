@@ -9,14 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            RunningPaceView()
-            Spacer()
+        NavigationView {
+            VStack {
+                RunningPaceView()
+                Spacer()
+            }
+            .onTapGesture {
+                self.hideKeyboard()
+            }
+            .backgroundColor(AppConstants.backgroundColor)
         }
-        .onTapGesture {
-            self.hideKeyboard()
-        }
-        .backgroundColor(AppConstants.backgroundColor)
+        .accentColor(AppConstants.accentColor)
     }
 }
 

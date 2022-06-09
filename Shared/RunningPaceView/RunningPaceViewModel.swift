@@ -28,6 +28,9 @@ public enum RowType {
 }
 
 final class RunningPaceViewModel: ObservableObject {
+    private var userDefaults: UDWrapper = .live
+    typealias LA = Localized.Alert.MissingFields
+
     @Published var timeHourValue: String = ""
     @Published var timeMinutesValue: String = ""
     @Published var timeSecondsValue: String = ""
@@ -40,6 +43,16 @@ final class RunningPaceViewModel: ObservableObject {
     @Published var missingFields: [RowType] = []
     @Published var showMissingFieldsAlert: Bool = false
 
+    @Published var distanceUnit: Units
+
+    public init() {
+        distanceUnit = userDefaults.getDistanceUnits()
+    }
+
+    public func onAppear() {
+        distanceUnit = userDefaults.getDistanceUnits()
+    }
+
     var missingFieldsAlertMessage: String? {
         guard !missingFields.isEmpty else {
             return nil
@@ -47,8 +60,8 @@ final class RunningPaceViewModel: ObservableObject {
 
         return missingFields
             .map { $0.title }
-            .joined(separator: " and ")
-            .appending(" not filled.")
+            .joined(separator: LA.Message.and)
+            .appending(LA.Message.notFilled)
     }
 
     private func alertAboutMissingFields(required: [RowType]) {
@@ -72,10 +85,6 @@ final class RunningPaceViewModel: ObservableObject {
         }
 
         showMissingFieldsAlert = !self.missingFields.isEmpty
-    }
-
-    var distanceUnit: Units {
-        UDWrapper.live.getDistanceUnits()
     }
 
     private var paceSeconds: Double? {

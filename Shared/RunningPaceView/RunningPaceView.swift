@@ -9,7 +9,9 @@ import SwiftUI
 import Xcore
 
 struct RunningPaceView: View {
+    typealias LA = Localized.Alert.MissingFields
     @ObservedObject private var viewModel: RunningPaceViewModel
+    @State private var isOptionsShowing: Bool = false
 
     public init() {
         viewModel = RunningPaceViewModel()
@@ -19,15 +21,18 @@ struct RunningPaceView: View {
         VStack {
             header
             content
+            NavigationLink(destination: OptionsView(), isActive: $isOptionsShowing) { }
         }
         .vAlign(.top)
         .padding()
         .alert(isPresented: $viewModel.showMissingFieldsAlert) {
-                Alert(
-                    title: Text("Missing Fields"),
-                    message: Text("\(viewModel.missingFieldsAlertMessage ?? "")")
-                )
-            }
+            Alert(
+                title: Text(LA.title),
+                message: Text(viewModel.missingFieldsAlertMessage ?? "")
+            )
+        }
+        .onAppear(perform: viewModel.onAppear)
+        .navigationBarHidden(true)
     }
 
     private var header: some View {
@@ -38,7 +43,7 @@ struct RunningPaceView: View {
             Spacer()
 
             Button {
-                print("Options")
+                isOptionsShowing = true
             } label: {
                 Image(assetIdentifier: .cog)
                     .resizable()

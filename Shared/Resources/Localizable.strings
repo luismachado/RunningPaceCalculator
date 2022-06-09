@@ -33,3 +33,14 @@
 "time_units.hour"= "hr";
 "time_units.minute"= "min";
 "time_units.second"= "sec";
+
+// MARK: - Alerts
+
+"alert.missing_fields.title" = "Missing Fields";
+"alert.missing_fields.message.and" = " and ";
+"alert.missing_fields.message.not_filled" = " not filled.";
+
+// MARK: - Options
+
+"options.title" = "Options";
+"options.row.distance_units" = "Distance Units";

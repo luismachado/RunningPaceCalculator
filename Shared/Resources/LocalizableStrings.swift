@@ -12,6 +12,19 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Localized {
 
+  internal enum Alert {
+    internal enum MissingFields {
+      /// Missing Fields
+      internal static let title = Localized.tr("Localizable", "alert.missing_fields.title")
+      internal enum Message {
+        ///  and 
+        internal static let and = Localized.tr("Localizable", "alert.missing_fields.message.and")
+        ///  not filled.
+        internal static let notFilled = Localized.tr("Localizable", "alert.missing_fields.message.not_filled")
+      }
+    }
+  }
+
   internal enum Distance {
     internal enum Title {
       /// 5K
@@ -22,6 +35,15 @@ internal enum Localized {
       internal static let marathon = Localized.tr("Localizable", "distance.title.marathon")
       /// 10K
       internal static let tenK = Localized.tr("Localizable", "distance.title.ten_k")
+    }
+  }
+
+  internal enum Options {
+    /// Options
+    internal static let title = Localized.tr("Localizable", "options.title")
+    internal enum Row {
+      /// Distance Units
+      internal static let distanceUnits = Localized.tr("Localizable", "options.row.distance_units")
     }
   }
 

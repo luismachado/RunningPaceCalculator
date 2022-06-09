@@ -7,11 +7,19 @@
 
 import Foundation
 
-enum Units: String {
+enum Units: String, CaseIterable {
     typealias L = Localized.Units
 
     case kilometers
     case miles
+
+    init?(title: String) {
+        guard let unit = Self.allCases.first(where: { $0.title == title }) else {
+            return nil
+        }
+
+        self = unit
+    }
 
     var title: String {
         switch self {
@@ -29,5 +37,9 @@ enum Units: String {
             case .miles:
                 return L.Miles.shortened
         }
+    }
+
+    static var allUnits: [String] {
+        Self.allCases.map { $0.title }
     }
 }
