@@ -7,21 +7,22 @@
 
 import SwiftUI
 import Xcore
+import GoogleMobileAds
 
 struct RunningPaceView: View {
     typealias LA = Localized.Alert.MissingFields
     @ObservedObject private var viewModel: RunningPaceViewModel
     @State private var isOptionsShowing: Bool = false
-
     public init() {
         viewModel = RunningPaceViewModel()
     }
 
     var body: some View {
         VStack {
+            NavigationLink(destination: OptionsView(), isActive: $isOptionsShowing) { }
             header
             content
-            NavigationLink(destination: OptionsView(), isActive: $isOptionsShowing) { }
+            ad
         }
         .vAlign(.top)
         .padding()
@@ -52,6 +53,13 @@ struct RunningPaceView: View {
                     .foregroundColor(AppConstants.accentColor)
             }
         }
+    }
+
+    @ViewBuilder
+    private var ad: some View {
+        Spacer()
+        SwiftUIBannerAd(adUnitId: AdConstants.live.bannerAdId)
+        Spacer()
     }
 
     private var content: some View {

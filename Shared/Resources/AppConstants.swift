@@ -13,3 +13,13 @@ public struct AppConstants {
 
     public static let kmToMilesConstant: Double = 0.621371
 }
+
+
+public struct AdConstants {
+    public static let live: Self = .init()
+
+    public var bannerAdId: String {
+        let bannerAdId = Bundle.main.object(forInfoDictionaryKey: "GADAdUnitId") as? String
+        return bannerAdId ?? ""
+    }
+}
