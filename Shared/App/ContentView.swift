@@ -19,6 +19,7 @@ struct ContentView: View {
             }
             .backgroundColor(AppConstants.backgroundColor)
         }
+        .navigationViewStyle(.stack)
         .accentColor(AppConstants.accentColor)
     }
 }
