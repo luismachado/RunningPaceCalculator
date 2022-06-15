@@ -115,7 +115,15 @@ final class RunningPaceViewModel: ObservableObject {
     }
 
     public func setDistanceFromPicker(stringValue: String) {
-        if let selectedDistanceNormalized = Distance(title: stringValue) {
+        guard let selectedDistanceNormalized = Distance(title: stringValue) else {
+            return
+        }
+
+        if userDefaults.getDistanceUnits() == .miles {
+            let selectedDistanceNormalizedMiles = selectedDistanceNormalized.distance * AppConstants.kmToMilesConstant
+            let rounded = Double(round(1000 * selectedDistanceNormalizedMiles)/1000)
+            self.distanceValue = "\(rounded)"
+        } else {
             self.distanceValue = String(selectedDistanceNormalized.distance)
         }
     }

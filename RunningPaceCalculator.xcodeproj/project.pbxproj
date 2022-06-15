@@ -52,6 +52,9 @@
 		80C8C93A2850E9E800323A15 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C9382850E9E800323A15 /* CustomTextField.swift */; };
 		80C8C93C2850E9F400323A15 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C93B2850E9F400323A15 /* CustomPicker.swift */; };
 		80C8C93D2850E9F400323A15 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C8C93B2850E9F400323A15 /* CustomPicker.swift */; };
+		80E3BBFF28523B45009E2EA6 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 80E3BBFE28523B45009E2EA6 /* GoogleMobileAds */; };
+		80E3BC0228523C44009E2EA6 /* BannerAdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E3BC0128523C44009E2EA6 /* BannerAdVC.swift */; };
+		80E3BC0428523C8C009E2EA6 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E3BC0328523C8C009E2EA6 /* BannerAd.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,9 @@
 		80C8C9352850E9CB00323A15 /* TextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Style.swift"; sourceTree = "<group>"; };
 		80C8C9382850E9E800323A15 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		80C8C93B2850E9F400323A15 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		80E3BC0128523C44009E2EA6 /* BannerAdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdVC.swift; sourceTree = "<group>"; };
+		80E3BC0328523C8C009E2EA6 /* BannerAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
+		80E3BC0528523E4B009E2EA6 /* RunningPaceCalculator--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RunningPaceCalculator--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E3BBFF28523B45009E2EA6 /* GoogleMobileAds in Frameworks */,
 				8023F5EB284E0D2800ADA815 /* Neumorphic in Frameworks */,
 				8023F5E5284E0BFD00ADA815 /* Xcore in Frameworks */,
 			);
@@ -140,6 +147,7 @@
 		8023F598284E04BB00ADA815 = {
 			isa = PBXGroup;
 			children = (
+				80E3BC0528523E4B009E2EA6 /* RunningPaceCalculator--iOS--Info.plist */,
 				8023F59D284E04BC00ADA815 /* Shared */,
 				8023F5AC284E04BC00ADA815 /* macOS */,
 				8023F5B5284E04BC00ADA815 /* Tests iOS */,
@@ -151,6 +159,7 @@
 		8023F59D284E04BC00ADA815 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				80E3BC0028523C33009E2EA6 /* GoogleAds */,
 				80C8C9342850E9BC00323A15 /* SwiftUI */,
 				8023F61B284F83F200ADA815 /* Model */,
 				8023F610284F804900ADA815 /* Style */,
@@ -284,6 +293,15 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		80E3BC0028523C33009E2EA6 /* GoogleAds */ = {
+			isa = PBXGroup;
+			children = (
+				80E3BC0128523C44009E2EA6 /* BannerAdVC.swift */,
+				80E3BC0328523C8C009E2EA6 /* BannerAd.swift */,
+			);
+			path = GoogleAds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -303,6 +321,7 @@
 			packageProductDependencies = (
 				8023F5E4284E0BFD00ADA815 /* Xcore */,
 				8023F5EA284E0D2800ADA815 /* Neumorphic */,
+				80E3BBFE28523B45009E2EA6 /* GoogleMobileAds */,
 			);
 			productName = "RunningPaceCalculator (iOS)";
 			productReference = 8023F5A5284E04BC00ADA815 /* Running Pace Calculator.app */;
@@ -399,6 +418,7 @@
 			packageReferences = (
 				8023F5E3284E0BFD00ADA815 /* XCRemoteSwiftPackageReference "xcore" */,
 				8023F5E9284E0D2800ADA815 /* XCRemoteSwiftPackageReference "neumorphic" */,
+				80E3BBFD28523B45009E2EA6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 8023F5A6284E04BC00ADA815 /* Products */;
 			projectDirPath = "";
@@ -463,7 +483,9 @@
 				80C8C93C2850E9F400323A15 /* CustomPicker.swift in Sources */,
 				8023F601284E31A400ADA815 /* LocalizableStrings.swift in Sources */,
 				8023F616284F814500ADA815 /* Button+Style.swift in Sources */,
+				80E3BC0228523C44009E2EA6 /* BannerAdVC.swift in Sources */,
 				8023F5E1284E05C200ADA815 /* RowView.swift in Sources */,
+				80E3BC0428523C8C009E2EA6 /* BannerAd.swift in Sources */,
 				8023F604284E31C600ADA815 /* ImageAssetIdentifier.swift in Sources */,
 				8023F5C6284E04BC00ADA815 /* RunningPaceCalculatorApp.swift in Sources */,
 				8023F5DB284E04D700ADA815 /* RunningPaceView.swift in Sources */,
@@ -650,6 +672,7 @@
 				DEVELOPMENT_TEAM = MJHBLUH3VK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RunningPaceCalculator--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -680,6 +703,7 @@
 				DEVELOPMENT_TEAM = MJHBLUH3VK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RunningPaceCalculator--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -903,6 +927,14 @@
 				kind = branch;
 			};
 		};
+		80E3BBFD28523B45009E2EA6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -915,6 +947,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8023F5E9284E0D2800ADA815 /* XCRemoteSwiftPackageReference "neumorphic" */;
 			productName = Neumorphic;
+		};
+		80E3BBFE28523B45009E2EA6 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80E3BBFD28523B45009E2EA6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
